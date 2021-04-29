@@ -9,7 +9,7 @@ class SignIn extends React.Component {
         }
     }
     OnEmailChange = (event) => {
-        this.setState({ signInEmail: event.target.value });
+        (this.setState({ signInEmail: event.target.value }));
     }
     OnPasswordChange = (event) => {
         this.setState({ signInPassword: event.target.value });
@@ -25,12 +25,14 @@ class SignIn extends React.Component {
           })
         })
           .then(response => response.json())
-          .then(user => {
-            if (user.id) {
-              this.props.loadUser(user)
-              this.props.onRouteChange('home');
-            }
-          })
+          .then((data) => {
+            //   console.log(data);
+            if (data === "1234") {
+                // console.log("success rian");
+                this.props.loadUser(data)
+                this.props.OnRouteChange('home');
+        }
+    })
       } 
 
     render() {
@@ -61,12 +63,12 @@ class SignIn extends React.Component {
                             </div>
                         </fieldset>
                         <div>
-                            <input
-                                onClick={this.onSubmitSignIn}
+                            <p
+                                onClick={() => this.onSubmitSignIn()}
                                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                                type="submit"
-                                value="Sign in"
-                            />
+                                // type="submit"
+                                // value="Sign in"
+                            >Sign In</p>
                         </div>
                         <div className="lh-copy mt3">
                             <p
